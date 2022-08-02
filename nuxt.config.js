@@ -34,17 +34,40 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
+  // target: "static",
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    // https://go.nuxtjs.dev/vuetify
-    "@nuxtjs/vuetify",
-  ],
+  buildModules: ["@nuxtjs/vuetify"],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
   ],
+
+  // transpile: ['@nuxt/image'],
+
+  // image: {
+  //   domains: ["images.ctfassets.net"],
+  //   contentful: {},
+  //   presets: {
+  //     hero: {
+  //       modifiers: {
+  //         format: "webp",
+  //         quality: 100,
+  //         width: 1536,
+  //       },
+  //     },
+  //   },
+  //   screens: {
+  //     xs: 320,
+  //     sm: 640,
+  //     md: 768,
+  //     lg: 1024,
+  //     xl: 1280,
+  //     xxl: 1536,
+  //     "2xl": 1536,
+  //   },
+  // },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -57,7 +80,7 @@ export default {
   vuetify: {
     customVariables: ["~/assets/variables.scss"],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
