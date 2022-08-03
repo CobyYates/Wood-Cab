@@ -12,13 +12,14 @@ export const mutations = {
 };
 
 export const actions = {
-  getPageItems({commit}) {
+  getPageItems({ commit }) {
+    console.log('here')
     contentfulClient.getEntries({
-      'content_type': 'frontpage',
-      order: '-sys.createdAt'
+      content_type: "navigation",
+      order: "-sys.createdAt"
     }).then((page) => {
       if(page) {
-        let navItems = page.items;
+        let navItems = page.items[0].fields;
         commit('setMenuItems', navItems);
       }
     }).catch((err) => {
