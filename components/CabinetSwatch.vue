@@ -20,8 +20,7 @@
               <v-img
                 :src="img.fields.file.url"
                 :alt="img.fields.file.description"
-                height="auto"
-                contain
+                height="130"
                 @click="openImage(img.fields.file.url)"
                 class="swatch"
               >
@@ -33,8 +32,8 @@
           </v-col>
         </v-row>
         <v-dialog v-model="model" width="400">
-          <v-img :src="selected" contain height="400">
-            <v-btn absolute top right icon @click="model = false">
+          <v-img :src="selected" contain height="400" class="img">
+            <v-btn class="close" icon @click="model = false">
               <v-icon large>mdi-close</v-icon>
             </v-btn>
           </v-img>
@@ -70,5 +69,19 @@ export default {
 <style lang="scss" scoped>
 .swatch {
   cursor: pointer;
+}
+
+.img {
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+
+::v-deep .v-dialog {
+  box-shadow: none!important;
 }
 </style>

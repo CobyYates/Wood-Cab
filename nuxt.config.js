@@ -8,8 +8,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: "%s - Nuxt Contentful Boiler",
-    title: "Nuxt Contentful Boiler",
+    titleTemplate: "%s - ",
+    title: "Element Cab Factory",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -23,7 +23,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: "@/plugins/flipbook", mode: "client" }],
 
   env: {
     CTF_SPACE_ID: config.CTF_SPACE_ID,
