@@ -1,6 +1,10 @@
 <template>
   <div>
     <Hero v-if="page.fields.hero" :hero="page.fields.hero" />
+    <CopyBlock
+      v-if="page.fields.copyBlock"
+      :copy="page.fields.copyBlock.fields"
+    />
     <v-row v-if="page.fields.cabinetSwatch">
       <v-col cols="10" md="8" class="mx-auto">
         <CabinetSwatch
@@ -10,7 +14,7 @@
         />
       </v-col>
     </v-row>
-    <v-row v-if="page.fields.galleryItems">
+    <v-row v-if="page.fields.galleryItems" class="mt-16">
       <v-col cols="10" md="8" class="mx-auto">
         <v-row>
           <v-col
@@ -38,6 +42,7 @@ import Hero from "~/components/Hero.vue";
 import CabinetSwatch from "~/components/CabinetSwatch.vue";
 import GalleryItem from "~/components/GalleryItem.vue";
 import Book from "../../components/Book.vue";
+import CopyBlock from "~/components/CopyBlock.vue";
 const contentfulClient = createClient();
 
 export default {
@@ -58,7 +63,7 @@ export default {
       })
       .catch(console.error);
   },
-  components: { Hero, CabinetSwatch, GalleryItem, Book },
+  components: { Hero, CabinetSwatch, GalleryItem, Book, CopyBlock },
 };
 </script>
 

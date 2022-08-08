@@ -11,7 +11,9 @@
         </v-overlay>
       </v-img>
     </v-hover>
-    <p class="title text-center primary--text">{{ image.title }}</p>
+    <p class="title text-center primary--text link" @click="openSwatch(image.link)">
+      {{ image.title }}
+    </p>
     <v-dialog v-model="model" width="auto">
       <v-img :src="selected" contain max-height="90vh" class="img">
         <v-btn icon @click="model = false" class="close">
@@ -41,12 +43,16 @@ export default {
       this.selected = img;
       this.model = true;
     },
+    openSwatch(link) {
+      window.location = `/door-styles#${link}`;
+      console.log(link);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.image {
+.image, .link {
   cursor: pointer;
 }
 
@@ -61,6 +67,6 @@ export default {
 }
 
 ::v-deep .v-dialog {
-  box-shadow: none!important;
+  box-shadow: none !important;
 }
 </style>

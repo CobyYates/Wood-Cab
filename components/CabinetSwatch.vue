@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :id="swatch.fields.id">
     <v-row class="py-10">
       <v-col cols="8" md="4">
         <v-img
@@ -12,8 +12,10 @@
       <v-col>
         <v-row>
           <v-col cols="12">
-            {{ swatch.fields.description }}
-            <v-divider class="primary mt-3" />
+            <h3 class="title primary--text">{{ swatch.fields.title.toUpperCase() }}</h3>
+            <p class="subtitle-1">{{ swatch.fields.description }}</p>
+            <v-divider class="primary my-3" />
+            <h3>COLOR OPTIONS</h3>
           </v-col>
           <v-col cols="3" v-for="img in swatch.fields.swatches" :key="img.i">
             <v-hover v-slot="{ hover }">
@@ -29,6 +31,7 @@
                 </v-overlay>
               </v-img>
             </v-hover>
+            <p>{{ img.fields.title }}</p>
           </v-col>
         </v-row>
         <v-dialog v-model="model" width="400">
@@ -82,6 +85,6 @@ export default {
 }
 
 ::v-deep .v-dialog {
-  box-shadow: none!important;
+  box-shadow: none !important;
 }
 </style>

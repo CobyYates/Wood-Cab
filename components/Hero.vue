@@ -65,7 +65,7 @@
         </v-img>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row v-if="hero.fields.description">
       <v-col class="mx-auto my-16" cols="12" md="10" lg="7">
         <h2 v-if="hero.fields.textBelow" class="text-center font-weight-light">
           {{ hero.fields.description }}
@@ -99,6 +99,9 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    @media only screen and (max-width: 900px) {
+      width: 90%;
+    }
   }
 }
 </style>

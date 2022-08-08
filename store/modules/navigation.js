@@ -13,7 +13,6 @@ export const mutations = {
 
 export const actions = {
   getPageItems({ commit }) {
-    console.log('here')
     contentfulClient.getEntries({
       content_type: "navigation",
       order: "-sys.createdAt"
