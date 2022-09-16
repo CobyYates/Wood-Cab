@@ -5,6 +5,7 @@
         :src="image.image.fields.file.url"
         @click="openImage(image.image.fields.file.url)"
         class="image"
+        :aspect-ratio="10/9"
       >
         <v-overlay v-show="hover" absolute>
           <v-icon large>mdi-arrow-expand</v-icon>

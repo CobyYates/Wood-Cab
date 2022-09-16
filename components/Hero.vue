@@ -9,7 +9,7 @@
           delimiter-icon="mdi-circle-medium"
           hide-delimiter-background
           cycle
-          interval="4000"
+          interval="5000"
         >
           <v-carousel-item
             v-for="image in hero.fields.desktopImages"
@@ -95,7 +95,7 @@ export default {
   position: relative;
   &-copy {
     position: absolute !important;
-    background-color: rgba(95, 95, 95, 0.637);
+    background-color: rgba(32, 32, 32, 0.562);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

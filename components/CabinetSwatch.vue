@@ -3,16 +3,21 @@
     <v-row class="py-10">
       <v-col cols="8" md="4">
         <v-img
+          v-if="swatch.fields.cabinetImage"
           :src="swatch.fields.cabinetImage.fields.file.url"
           :alt="swatch.fields.cabinetImage.fields.file.description"
-          height="600"
+          height="599"
+          width="341"
           contain
+          class="elevation-5"
         />
       </v-col>
-      <v-col>
+      <v-col cols="4" md="8">
         <v-row>
           <v-col cols="12">
-            <h3 class="title primary--text">{{ swatch.fields.title.toUpperCase() }}</h3>
+            <h3 class="title primary--text">
+              {{ swatch.fields.title.toUpperCase() }}
+            </h3>
             <p class="subtitle-1">{{ swatch.fields.description }}</p>
             <v-divider class="primary my-3" />
             <h3>COLOR OPTIONS</h3>
@@ -24,7 +29,7 @@
                 :alt="img.fields.file.description"
                 height="130"
                 @click="openImage(img.fields.file.url)"
-                class="swatch"
+                class="swatch elevation-3"
               >
                 <v-overlay v-show="hover" absolute>
                   <v-icon large>mdi-magnify</v-icon>
@@ -34,8 +39,8 @@
             <p>{{ img.fields.title }}</p>
           </v-col>
         </v-row>
-        <v-dialog v-model="model" width="400">
-          <v-img :src="selected" contain height="400" class="img">
+        <v-dialog v-model="model" width="600">
+          <v-img :src="selected" contain height="600" width="600" class="img">
             <v-btn class="close" icon @click="model = false">
               <v-icon large>mdi-close</v-icon>
             </v-btn>
