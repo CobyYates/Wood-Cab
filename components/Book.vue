@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ value }}
     <client-only>
       <flipbook
         class="flipbook"

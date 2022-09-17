@@ -1,7 +1,7 @@
 <template>
   <div :id="swatch.fields.id">
     <v-row class="py-10">
-      <v-col cols="8" md="4">
+      <v-col cols="12" md="4">
         <v-img
           v-if="swatch.fields.cabinetImage"
           :src="swatch.fields.cabinetImage.fields.file.url"
@@ -9,10 +9,9 @@
           height="599"
           width="341"
           contain
-          class="elevation-5"
         />
       </v-col>
-      <v-col cols="4" md="8">
+      <v-col cols="12" md="8">
         <v-row>
           <v-col cols="12">
             <h3 class="title primary--text">
@@ -22,7 +21,7 @@
             <v-divider class="primary my-3" />
             <h3>COLOR OPTIONS</h3>
           </v-col>
-          <v-col cols="3" v-for="img in swatch.fields.swatches" :key="img.i">
+          <v-col cols="6" md="3" v-for="img in swatch.fields.swatches" :key="img.i">
             <v-hover v-slot="{ hover }">
               <v-img
                 :src="img.fields.file.url"
@@ -39,8 +38,8 @@
             <p>{{ img.fields.title }}</p>
           </v-col>
         </v-row>
-        <v-dialog v-model="model" width="600">
-          <v-img :src="selected" contain height="600" width="600" class="img">
+        <v-dialog v-model="model">
+          <v-img :src="selected" contain height="600" class="img">
             <v-btn class="close" icon @click="model = false">
               <v-icon large>mdi-close</v-icon>
             </v-btn>

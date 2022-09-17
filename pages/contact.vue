@@ -14,14 +14,34 @@
         <v-col cols="12" md="6">
           <v-row>
             <v-col cols="12" md="6" class="py-0">
-              <v-text-field outlined v-model="name" placeholder="Name" name="name"/>
+              <v-text-field
+                outlined
+                v-model="name"
+                placeholder="Name"
+                name="name"
+              />
             </v-col>
             <v-col cols="12" md="6" class="pt-0">
-              <v-text-field outlined v-model="email" placeholder="Email" name="email" />
+              <v-text-field
+                outlined
+                v-model="email"
+                placeholder="Email"
+                name="email"
+              />
             </v-col>
           </v-row>
-          <v-text-field outlined v-model="location" placeholder="Location" name="city" />
-          <v-textarea outlined v-model="message" placeholder="Message" name="message" />
+          <v-text-field
+            outlined
+            v-model="location"
+            placeholder="Location"
+            name="city"
+          />
+          <v-textarea
+            outlined
+            v-model="message"
+            placeholder="Message"
+            name="message"
+          />
           <v-btn large outlined color="primary">Submit</v-btn>
         </v-col>
         <v-col cols="12" md="3">
@@ -31,8 +51,8 @@
             our products.
           </p>
           <h2 class="title">Factory/Corporate Headquarters:</h2>
-          <p class="mb-0">3501 West Bavaria St.</p>
-          <p>Eagle, ID 83646</p>
+          <p class="mb-0">7370 Dean Martin Dr #401</p>
+          <p>Las Vegas, NV 89139</p>
           <h2 class="title">Phone:</h2>
           <p>(208)-274-8000</p>
           <h2 class="title">Business Hours:</h2>

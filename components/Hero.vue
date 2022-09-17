@@ -47,6 +47,7 @@
         </v-carousel>
         <v-img
           v-else
+          :height="hero.fields.height"
           :src="hero.fields.desktopImages[0].fields.file.url"
           max-width="100%"
           min-width="100%"

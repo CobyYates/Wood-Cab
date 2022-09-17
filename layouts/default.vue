@@ -1,32 +1,38 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-if="$vuetify.breakpoint.smAndDown"
-      v-model="drawer"
-      app
-      width="70vw"
+  <v-app dark class="example">
+    <v-bottom-sheet v-model="drawer">
+      <v-sheet class="text-center">
+        <v-list dense class="py-0">
+          <v-list-item
+            :to="item.to"
+            @click="drawer = false"
+            v-for="item in items"
+            :key="item.title"
+          >
+            <v-list-item-content>
+              <v-list-item-title
+                class="headline font-weight-light py-3 text-center"
+              >
+                {{ item.title }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-sheet>
+    </v-bottom-sheet>
+
+    <v-app-bar
+      :app="$vuetify.breakpoint.smAndDown"
+      class="navigation"
+      :height="$vuetify.breakpoint.smAndDown ? '50' : '100'"
     >
-      <!-- <v-list>
-        <v-list-item
-          v-for="(item, i) in navItems.navItem"
-          :key="i"
-          :to="item.fields.url"
-          router
-          exact
-        >
-          <v-list-item-content>
-            <v-list-item-title v-text="item.fields.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list> -->
-    </v-navigation-drawer>
-    <v-app-bar class="navigation" :clipped-left="clipped" height="100">
       <template v-if="navItems && $vuetify.breakpoint.mdAndUp">
         <v-img
-          v-if="navItems.logo"
+          v-if="navItems != null"
           :src="navItems.logo.fields.file.url"
           max-height="90"
           max-width="90"
+          to="/"
         />
         <ul class="ml-auto">
           <li v-for="item in navItems.navItem" :key="item.i">
@@ -42,21 +48,34 @@
       </template>
     </v-app-bar>
 
-    <v-main>
-      <v-container fluid>
-        <Nuxt />
+    <v-main class="max-width" ref="scroll">
+      <v-container fluid class="max-width">
+        <Nuxt class="max-width" />
       </v-container>
     </v-main>
+
+    <v-btn
+      fixed
+      bottom
+      right
+      v-show="scY > 500"
+      fab
+      color="primary"
+      @click="toTop"
+    >
+      <v-icon>mdi-chevron-up</v-icon>
+    </v-btn>
+
     <v-footer padless>
       <v-row class="grey darken-4 white--text">
         <v-col cols="11" md="8" class="mx-auto py-10 my-6">
           <v-row>
             <v-col cols="12" sm="8" md="6" lg="5">
               <v-img
-                v-if="navItems.logo"
-                :src="navItems.logo.fields.file.url"
-                max-height="90"
-                max-width="90"
+                v-if="navItems != null"
+                :src="navItems.footerLogo.fields.file.url"
+                max-height="150"
+                max-width="150"
               />
             </v-col>
             <v-col cols="12" md="4" class="ml-auto text-end">
@@ -86,10 +105,51 @@ export default {
   name: "DefaultLayout",
   data() {
     return {
+      date: new Date().getFullYear(),
       clipped: false,
       drawer: false,
       fixed: true,
+      scTimer: 0,
+      scY: 0,
+      items: [
+        {
+          title: "Home",
+          to: "/",
+        },
+        {
+          title: "Door Styles",
+          to: "/door-styles",
+        },
+        {
+          title: "Inspiration Gallery",
+          to: "/inspiration-gallery",
+        },
+        {
+          title: "Brochures",
+          to: "/brochures",
+        },
+        {
+          title: "Contact Us",
+          to: "/contact",
+        },
+      ],
     };
+  },
+  methods: {
+    handleScroll: function () {
+      if (this.scTimer) return;
+      this.scTimer = setTimeout(() => {
+        this.scY = window.scrollY;
+        clearTimeout(this.scTimer);
+        this.scTimer = 0;
+      }, 100);
+    },
+    toTop: function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
   },
   // methods: {
   //   getMetaTag(val) {
@@ -158,12 +218,17 @@ export default {
     ...mapState("navigation", ["navItems"]),
   },
   mounted() {
+    window.addEventListener("scroll", this.handleScroll);
     this.$store.dispatch("navigation/getPageItems");
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.max-width {
+  overflow-y: none;
+}
+
 .navigation {
   ul {
     padding: 0;

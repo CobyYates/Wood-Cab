@@ -15,10 +15,10 @@
     <p class="title text-center primary--text link" @click="openSwatch(image.link)">
       {{ image.title }}
     </p>
-    <v-dialog v-model="model" width="auto">
-      <v-img :src="selected" contain max-height="90vh" class="img">
-        <v-btn icon @click="model = false" class="close">
-          <v-icon large>mdi-close</v-icon>
+    <v-dialog v-model="model" height="90vh">
+      <v-img :src="selected" contain max-height="90vh" class="d-flex justify-end">
+        <v-btn icon @click="model = false">
+          <v-icon large color="white">mdi-close</v-icon>
         </v-btn>
       </v-img>
     </v-dialog>
@@ -63,7 +63,7 @@ export default {
 
 .close {
   position: absolute;
-  right: 60px;
+  right: 100px;
   top: 10px;
 }
 
