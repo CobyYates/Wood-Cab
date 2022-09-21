@@ -36,6 +36,6 @@ export default {
 
 <style lang="scss" scoped>
 .flipbook {
-  height: 90vh !important;
+  height: 85vh !important;
 }
 </style>

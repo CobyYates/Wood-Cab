@@ -22,10 +22,11 @@
     </v-bottom-sheet>
 
     <v-app-bar
+      :height="$vuetify.breakpoint.smAndDown ? '50' : '100'"
       :app="$vuetify.breakpoint.smAndDown"
       class="navigation"
-      :height="$vuetify.breakpoint.smAndDown ? '50' : '100'"
       fixed
+      width="100vw"
     >
       <template v-if="navItems && $vuetify.breakpoint.mdAndUp">
         <v-img
@@ -50,7 +51,7 @@
       </template>
     </v-app-bar>
 
-    <v-main class="cont" ref="scroll">
+    <v-main :class="$vuetify.breakpoint.mdAndUp ? 'cont' : ''" ref="scroll">
       <v-container fluid>
         <Nuxt />
       </v-container>
