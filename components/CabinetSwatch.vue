@@ -21,12 +21,17 @@
             <v-divider class="primary my-3" />
             <h3>COLOR OPTIONS</h3>
           </v-col>
-          <v-col cols="6" md="3" v-for="img in swatch.fields.swatches" :key="img.i">
+          <v-col
+            cols="6"
+            md="3"
+            v-for="img in swatch.fields.swatches"
+            :key="img.i"
+          >
             <v-hover v-slot="{ hover }">
               <v-img
                 :src="img.fields.file.url"
                 :alt="img.fields.file.description"
-                height="130"
+                height="150"
                 @click="openImage(img.fields.file.url)"
                 class="swatch elevation-3"
               >
@@ -38,8 +43,16 @@
             <p>{{ img.fields.title }}</p>
           </v-col>
         </v-row>
-        <v-dialog v-model="model">
-          <v-img :src="selected" contain height="600" class="img">
+        <v-dialog
+          v-model="model"
+          :height="$vuetify.breakpoint.mdAndUp ? '600' : '500'"
+          :width="$vuetify.breakpoint.mdAndUp ? '600' : '500'"
+        >
+          <v-img
+            :src="selected"
+            contain
+            class="img"
+            >
             <v-btn class="close" icon @click="model = false">
               <v-icon large>mdi-close</v-icon>
             </v-btn>

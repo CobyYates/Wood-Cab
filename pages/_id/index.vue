@@ -34,7 +34,7 @@
           </v-row>
         </v-col>
       </v-row>
-      <v-row v-if="page.fields.flipbook">
+      <v-row v-if="page.fields.flipbook" class="mb-10">
         <v-col>
           <Book :pdf="page.fields.flipbook" />
         </v-col>

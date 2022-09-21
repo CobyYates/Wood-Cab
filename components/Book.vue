@@ -1,24 +1,12 @@
 <template>
-  <div>
+  <div :class="$vuetify.breakpoint.mdAndUp ? 'pt-16' : ''">
     <client-only>
       <flipbook
         class="flipbook"
         v-model="value"
         :pages="pages"
-        :click-to-zoom="false"
-        v-slot="flipbook"
-      >
-        <div class="text-center mb-n16">
-          <v-btn @click="flipbook.flipLeft">
-            <v-icon color="primary">mdi-chevron-left</v-icon>
-            Previous
-          </v-btn>
-          <v-btn @click="flipbook.flipRight">
-            Next
-            <v-icon color="primary">mdi-chevron-right</v-icon>
-          </v-btn>
-        </div>
-      </flipbook>
+        :click-to-zoom="true"
+      />
     </client-only>
   </div>
 </template>
@@ -48,6 +36,6 @@ export default {
 
 <style lang="scss" scoped>
 .flipbook {
-  height: 100vh !important;
+  height: 90vh !important;
 }
 </style>

@@ -54,7 +54,7 @@
           :max-height="hero.fields.height"
           class="hero-image"
         >
-          <div class="hero-image-copy text-center pa-6">
+          <div v-if="hero.fields.title" class="hero-image-copy text-center pa-6">
             <h2
               :class="
                 hero.fields.textColor ? `${hero.fields.textColor}--text` : ''
@@ -96,7 +96,7 @@ export default {
   position: relative;
   &-copy {
     position: absolute !important;
-    background-color: rgba(32, 32, 32, 0.562);
+    background-color: rgba(7, 7, 7, 0.644);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

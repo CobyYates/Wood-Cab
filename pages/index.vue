@@ -1,10 +1,14 @@
 <template>
   <div>
     <Hero v-if="page.fields.hero" :hero="page.fields.hero" />
-    <CopyBlock
-      v-if="page.fields.copyBlock"
-      :copy="page.fields.copyBlock.fields"
-    />
+    <v-row>
+      <v-col>
+        <CopyBlock
+          v-if="page.fields.copyBlock"
+          :copy="page.fields.copyBlock.fields"
+        />
+      </v-col>
+    </v-row>
     <v-row v-if="page.fields.cabinetSwatch">
       <v-col cols="10" md="8" class="mx-auto">
         <CabinetSwatch

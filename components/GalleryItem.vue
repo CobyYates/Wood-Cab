@@ -5,19 +5,31 @@
         :src="image.image.fields.file.url"
         @click="openImage(image.image.fields.file.url)"
         class="image"
-        :aspect-ratio="10/9"
+        :aspect-ratio="10 / 9"
       >
         <v-overlay v-show="hover" absolute>
           <v-icon large>mdi-arrow-expand</v-icon>
         </v-overlay>
       </v-img>
     </v-hover>
-    <p class="title text-center primary--text link" @click="openSwatch(image.link)">
+    <p
+      class="title text-center primary--text link"
+      @click="openSwatch(image.link)"
+    >
       {{ image.title }}
     </p>
-    <v-dialog v-model="model" height="90vh">
-      <v-img :src="selected" contain max-height="90vh" class="d-flex justify-end">
-        <v-btn icon @click="model = false">
+    <v-dialog
+      v-model="model"
+      height="90vh"
+      :width="$vuetify.breakpoint.mdAndUp ? '1300' : 'auto'"
+    >
+      <v-img
+        :src="selected"
+        contain
+        max-height="90vh"
+        class="d-flex justify-end"
+      >
+        <v-btn class="close" icon @click="model = false">
           <v-icon large color="white">mdi-close</v-icon>
         </v-btn>
       </v-img>
@@ -53,7 +65,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.image, .link {
+.image,
+.link {
   cursor: pointer;
 }
 
@@ -63,7 +76,7 @@ export default {
 
 .close {
   position: absolute;
-  right: 100px;
+  right: 10px;
   top: 10px;
 }
 

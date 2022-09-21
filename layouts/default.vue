@@ -25,6 +25,7 @@
       :app="$vuetify.breakpoint.smAndDown"
       class="navigation"
       :height="$vuetify.breakpoint.smAndDown ? '50' : '100'"
+      fixed
     >
       <template v-if="navItems && $vuetify.breakpoint.mdAndUp">
         <v-img
@@ -32,7 +33,8 @@
           :src="navItems.logo.fields.file.url"
           max-height="90"
           max-width="90"
-          to="/"
+          @click="toHome"
+          class="hover"
         />
         <ul class="ml-auto">
           <li v-for="item in navItems.navItem" :key="item.i">
@@ -48,9 +50,9 @@
       </template>
     </v-app-bar>
 
-    <v-main class="max-width" ref="scroll">
-      <v-container fluid class="max-width">
-        <Nuxt class="max-width" />
+    <v-main class="cont" ref="scroll">
+      <v-container fluid>
+        <Nuxt />
       </v-container>
     </v-main>
 
@@ -66,7 +68,7 @@
       <v-icon>mdi-chevron-up</v-icon>
     </v-btn>
 
-    <v-footer padless>
+    <v-footer class="mx-0">
       <v-row class="grey darken-4 white--text">
         <v-col cols="11" md="8" class="mx-auto py-10 my-6">
           <v-row>
@@ -144,6 +146,9 @@ export default {
         this.scTimer = 0;
       }, 100);
     },
+    toHome() {
+      this.$router.push("/");
+    },
     toTop: function () {
       window.scrollTo({
         top: 0,
@@ -151,7 +156,6 @@ export default {
       });
     },
   },
-  // methods: {
   //   getMetaTag(val) {
   //     console.log(val)
   //     console.log(first)
@@ -225,8 +229,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.max-width {
-  overflow-y: none;
+.cont {
+  margin-top: 100px;
+}
+
+.hover {
+  cursor: pointer;
 }
 
 .navigation {

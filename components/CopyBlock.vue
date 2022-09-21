@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" class="mt-16">
+  <v-row justify="center" class="my-16">
     <v-col class="text-center" cols="12" md="9">
       <h1 v-if="copy.title" :class="titleStyle">{{ copy.title }}</h1>
       <h2
