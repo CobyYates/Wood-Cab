@@ -1,6 +1,8 @@
 import colors from "vuetify/es5/util/colors";
 
 const config = require("./contentful.json");
+require("dotenv").config();
+const contentful = require("contentful");
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -8,7 +10,6 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: "%s - ",
     title: "Woodcab Factory",
     meta: [
       { charset: "utf-8" },
@@ -96,7 +97,20 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
+  // build: {
+  //   extend(config, { isDev, isClient }) {
+  //     if (isDev && isClient) {
+  //       config.module.rules.push({
+  //         enforce: "pre",
+  //         test: /\.(js|vue)$/,
+  //         loader: "eslint-loader",
+  //         exclude: /(node_modules)/,
+  //       });
+  //     }
+  //   },
+  // },
   build: {
+    transpile: ["vuetify/lib"],
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
@@ -106,6 +120,30 @@ export default {
           exclude: /(node_modules)/,
         });
       }
+      config.node = {
+        fs: "empty",
+      };
+    },
+  },
+  generate: {
+    routes: () => {
+      const client = contentful.createClient({
+        space: process.env.CTF_SPACE_ID,
+        accessToken: process.env.CTF_CDA_ACCESS_TOKEN,
+      });
+
+      return client
+        .getEntries({
+          content_type: "page",
+        })
+        .then((response) => {
+          return response.items.map((entry) => {
+            return {
+              route: entry.fields.slug,
+              payload: entry,
+            };
+          });
+        });
     },
   },
 };

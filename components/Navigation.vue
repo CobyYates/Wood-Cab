@@ -1,10 +1,7 @@
 <template>
   <v-row>
     <v-col class="navigation d-flex align-center">
-      <nav
-        v-if="navItems"
-        class="d-flex mx-10"
-      >
+      <nav v-if="navItems" class="d-flex mx-10">
         <v-img :src="navItems.logo.fields.file.url" max-width="200" />
         <v-spacer />
         <ul role="menu">

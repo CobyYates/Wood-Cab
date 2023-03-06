@@ -27,7 +27,6 @@ export default {
       if (this.copy.descriptionFormat) {
         result = this.copy.descriptionFormat
       }
-      console.log('des',result)
       return result
     },
     titleStyle() {
@@ -35,7 +34,6 @@ export default {
       if (this.copy.titleFormat) {
         result = this.copy.titleFormat
       }
-      console.log('title',result)
       return result
     }
   },

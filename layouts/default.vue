@@ -84,9 +84,9 @@
             <v-col cols="12" md="4" class="ml-auto text-end">
               <h3 class="font-weight-light title">GET IN TOUCH</h3>
               <div class="pt-8 font-weight-light">
-                <p class="mb-1">702-329-5030</p>
+                <p class="mb-1">(702) 803-1201</p>
                 <p class="mb-1">info@elementcabinetdesign.com</p>
-                <p class="mb-1">7370 Dean Martin Dr #401 Las Vegas, NV 89139</p>
+                <p class="mb-1">6283 S. Valley View Blvd. | Suite J Las Vegas, NV 89118</p>
               </div>
             </v-col>
           </v-row>
@@ -230,6 +230,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v-footer {
+  padding: 12px;
+}
 .cont {
   margin-top: 100px;
 }

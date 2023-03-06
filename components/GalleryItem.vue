@@ -13,8 +13,7 @@
       </v-img>
     </v-hover>
     <p
-      class="title text-center primary--text link"
-      @click="openSwatch(image.link)"
+      class="title text-center link"
     >
       {{ image.title }}
     </p>
@@ -58,15 +57,13 @@ export default {
     },
     openSwatch(link) {
       window.location = `/door-styles#${link}`;
-      console.log(link);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.image,
-.link {
+.image {
   cursor: pointer;
 }
 
