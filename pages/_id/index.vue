@@ -6,7 +6,7 @@
         v-if="page.fields.copyBlock"
         :copy="page.fields.copyBlock.fields"
       />
-      <v-row class="grey lighten-2 py-10" v-if="page.fields.cabinetSwatch">
+      <v-row class="grey lighten-4 py-10" v-if="page.fields.cabinetSwatch">
         <v-col class="text-center">
           <swatch-list :swatches="page.fields.cabinetSwatch" />
         </v-col>

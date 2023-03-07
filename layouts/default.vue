@@ -47,7 +47,7 @@
       </template>
       <template v-if="$vuetify.breakpoint.smAndDown">
         <v-spacer />
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer" name="mobile navigation button" />
       </template>
     </v-app-bar>
 
@@ -222,9 +222,13 @@ export default {
   computed: {
     ...mapState("navigation", ["navItems"]),
   },
+  // async fetch() {
+  // },
+  async beforeCreate() {
+    await this.$store.dispatch("navigation/getPageItems");
+  },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
-    this.$store.dispatch("navigation/getPageItems");
   },
 };
 </script>
